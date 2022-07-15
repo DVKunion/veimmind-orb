@@ -1,0 +1,30 @@
+description: >
+  use veinmind-runner to scan image
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  scan-action:
+    description: 'Scan action for scanning security issues'
+    type: string
+    default: 'scan-host'
+  image-ref:
+    description: 'image reference'
+    type: string
+  exit-code:
+    description: 'exit-code when specified security issue found'
+    type: integer
+    default: 0
+  output:
+    description: 'save results to output file'
+    type: string
+    default: 'report.json'
+  
+steps:
+  - run:
+      environment:
+        SCAN_ACTION:  <<parameters.scan-action>>
+        IMAGE_REF:  <<parameters.image-ref>>
+        EXIT_CODE:  <<parameters.exit-code>>
+        OUTPUT:  <<parameters.output>>
+      name: Scan
+      command: <<include(scripts/run.sh)>>

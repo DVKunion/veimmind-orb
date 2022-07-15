@@ -10,4 +10,6 @@ usage:
   workflows:
     use-my-orb:
       jobs:
-        - veinmind-orb/scan
+        - veinmind-orb/scan:
+            image-ref: "123"
+            exit-code: 1
