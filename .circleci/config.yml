@@ -11,7 +11,7 @@ filters: &filters
 workflows:
   lint-pack:
     jobs:
-      - orb-tools/lint:
+      - orb-tools/lint: 
           filters: *filters
       - orb-tools/pack:
           filters: *filters
@@ -26,7 +26,7 @@ workflows:
           requires:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
           # Use a context to hold your publishing token.
-          context: <publishing-context>
+          context: "test"
           filters: *filters
       # Triggers the next workflow in the Orb Development Kit.
       - orb-tools/continue:
