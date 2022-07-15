@@ -18,13 +18,12 @@ parameters:
     description: 'save results to output file'
     type: string
     default: 'report.json'
-  
 steps:
   - run:
       environment:
-        SCAN_ACTION:  <<parameters.scan-action>>
-        IMAGE_REF:  <<parameters.image-ref>>
-        EXIT_CODE:  <<parameters.exit-code>>
-        OUTPUT:  <<parameters.output>>
-      name: Scan
+        SCAN_ACTION: <<parameters.scan-action>>
+        IMAGE_REF: <<parameters.image-ref>>
+        EXIT_CODE: <<parameters.exit-code>>
+        OUTPUT: <<parameters.output>>
+      name: scan
       command: <<include(scripts/run.sh)>>

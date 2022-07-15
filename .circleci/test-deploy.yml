@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - <orb-name>/greet
+      - veinmind-orb/scan
 workflows:
   test-deploy:
     jobs:
@@ -26,13 +26,13 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: <namespace>/<orb-name>
+          orb-name: veinmind-orb/veinmind-orb
           vcs-type: << pipeline.project.type >>
           pub-type: production
           requires:
             - orb-tools/pack
             - command-tests
-          context: <publishing-context>
+          context: "123"
           filters:
             branches:
               ignore: /.*/
